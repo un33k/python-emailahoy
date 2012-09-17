@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import sys 
-import DNS
 import smtplib
 import socket
 import re
+from utils import query_mx
 
 # only allow the import of our public APIs (UU-SLUG = Uniqure & Unicode Slug)
 __all__ = ['VerifyEmail', 'verify_email_address']
@@ -21,7 +21,7 @@ class VerifyEmail(object):
         mx = []
         if self.is_hostname_valid(hostname):
             try:
-                mx = DNS.mxlookup(hostname)
+                mx = query_mx(hostname)
             except:
                 pass
         return mx

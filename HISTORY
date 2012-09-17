@@ -1,4 +1,9 @@
 
+- Sept 17, 2012 (v 0.1)
+------------------------
+1. Remove dependency on external packages (pydns)
+
+
 - Sept 16, 2012 (v 0.1)
 ------------------------
 1. Initial release

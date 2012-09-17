@@ -12,7 +12,7 @@ setup(name='python-emailahoy',
     author_email='val@neekware.com',
     url='http://github.com/un33k/python-emailahoy',
     packages=['emailahoy'],
-    requires = ['pydns', ],
+    install_requires = ['pydns', ],
     classifiers = [
       'Development Status :: 4 - Beta',
       'Intended Audience :: Developers',

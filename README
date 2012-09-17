@@ -1,0 +1,37 @@
+=Python EmailAhoy=
+
+A Python email utility that verifies existence of an email address
+
+Author: `Val Neekman <val@neekware.com>`
+
+Introduction
+
+Usage Example:
+--------------
+
+from emailahoy import VerifyEmail, verify_email_address
+
+# to verify and receive the response status use the class
+##############################################
+e = VerifyEmail()
+status = e.verify_email_smtp('test@example.com')
+if e.was_found(status):
+    print >> sys.stderr, "Found:", status
+elif e.not_found(status):
+    print >> sys.stderr, "Not Found:", status
+else:
+    print >> sys.stderr, "Unverifiable:", status
+
+# to just quickly check if an email exist or not use the shorthand function
+##############################################
+if verify_email_address('test@example.com'):
+    print >> sys.stderr, "Found"
+else:
+    print >> sys.stderr, "Not found"
+
+# Note:
+##############################################
+If email is valid, this returns within a second
+If email is not valid or unverifiable, it can take up to 5 seconds
+
+

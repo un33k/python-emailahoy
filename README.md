@@ -66,6 +66,14 @@ To run the tests against the current environment:
 Changelog
 =========
 
+0.0.5
+-----
+* Enabled Unittest
+
+0.0.4
+-----
+* Added Unittest
+
 0.0.3
 -----
 * Added Travis CI support

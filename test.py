@@ -18,18 +18,16 @@ class TestEmailVerificationFunctions(unittest.TestCase):
                             from_host='neekware.com',
                             from_email='info@neekware.com'
                         )
-        
         # email doesn't exist
         self.assertEquals(self.e.not_found(status), True)
 
     def test_class_based_valid_email(self):
         """ Test the existance of a valid email address (class based)"""
         status = self.e.verify_email_smtp(
-                            email='un33kvu@gmail.com',
+                            email='info@neekware.com',
                             from_host='neekware.com',
                             from_email='info@neekware.com'
                         )
-
         # email exists
         self.assertEquals(self.e.was_found(status), True)
 
@@ -41,7 +39,6 @@ class TestEmailVerificationFunctions(unittest.TestCase):
                             from_host='neekware.com',
                             from_email='info@neekware.com'
                         )
-
         # email doesn't exists
         self.assertEquals(found, False)
             
@@ -50,11 +47,10 @@ class TestEmailVerificationFunctions(unittest.TestCase):
         """ Test the existance of a valid email address (function based)"""
 
         found = verify_email_address(
-                            email='un33kvu@gmail.com',
+                            email='info@neekware.com',
                             from_host='neekware.com',
                             from_email='info@neekware.com'
                         )
-
         # email exists
         self.assertEquals(found, True)
             

@@ -37,7 +37,7 @@ class VerifyEmail(object):
     """ Verify if email exists """
 
     EMAIL_RE = re.compile('([\w\-\.+]+@\w[\w\-]+\.+[\w\-]+)')
-    default_response = (550, 'Unknown')
+    default_response = (550, 'Reason not known')
     
     # given a hostname, all mx records will be returned
     def get_mx_for_hostname(self, hostname):
@@ -128,6 +128,8 @@ class VerifyEmail(object):
         if self.is_email_valid(email):
             hostname = self.get_hostname_from_email(email)
             mx = self.get_mx_for_hostname(hostname)
+            if not mx:
+                return (550, 'No-Mx-Found')
             for m in mx:
                 server = self.get_smtp_connection(m[1])
                 if server:
@@ -146,6 +148,8 @@ class VerifyEmail(object):
                             except:
                                 continue
                             break
+            if not server:
+                return (550, 'No-Server-Connection')
         return resp
             
 # given an email it returns True if it can tell it exist or False

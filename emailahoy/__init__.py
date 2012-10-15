@@ -48,7 +48,8 @@ class VerifyEmail(object):
             except:
                 pass
         return mx
-    
+
+
     # given a host name, returns True if valid, else False
     def is_hostname_valid(self, hostname):
         """ if hostname is valid """
@@ -58,10 +59,12 @@ class VerifyEmail(object):
             return False
         return True
 
+
     # given an email address, returns True if email matches a valid pattern
     def is_email_valid(self, email):
         """ if a given email maches the email pattern """
         return self.EMAIL_RE.search(email)
+
 
     # given an email, hostname is returned
     def get_hostname_from_email(self, email):
@@ -70,6 +73,7 @@ class VerifyEmail(object):
         except:
             hostname = None
         return hostname
+
 
     # given a hostname, a smtp server connection is returned or None
     def get_smtp_connection(self, hostname):
@@ -85,11 +89,13 @@ class VerifyEmail(object):
             if connection_success(resp):
                 return server
         return None
-    
+
+
     # given a  response tuple, it returns True if status was success
     def was_found(self, resp):
         """ email WAS found """
         return resp[0] == 250
+
 
     # given a response tuple, it returns True if it can tell if email was not found
     def not_found(self, resp):
@@ -105,14 +111,15 @@ class VerifyEmail(object):
                 "invalid",
                 "doesn't handle",
         ]
-        if resp[0] != 250 and any(a in resp[1].lower() for a in not_found_words):
-            return True
+        return resp[0] != 250 and any(a in resp[1].lower() for a in not_found_words):
+
 
     # given a response tuple, it returns true if it couldn't tell, if email found or not
     def could_not_verify_status(self, resp):
         """ email unverifiable """
         return not (self.was_found(resp) or self.not_found(resp))
-    
+
+
     # returns a response tuple indicating the existance of an email address
     def verify_email_smtp(
         self,
@@ -151,7 +158,8 @@ class VerifyEmail(object):
             if not server:
                 return (550, 'No-Server-Connection')
         return resp
-            
+
+
 # given an email it returns True if it can tell it exist or False
 def  verify_email_address(
                 email, 

@@ -1,13 +1,5 @@
 *.pyc
-*.pyo
-*.db
-*.swp
-*.log
-.DS_Store
-*~
-dist
-build
 MANIFEST
-src
-.svn
-*_db
+dist/
+build/
+*.egg-info/

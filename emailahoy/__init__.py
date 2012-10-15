@@ -1,13 +1,36 @@
 # -*- coding: utf-8 -*-
 
+__version__ = '0.0.3'
+
 import sys 
 import smtplib
 import socket
 import re
-from utils import query_mx
+import popen2
 
-# only allow the import of our public APIs (UU-SLUG = Uniqure & Unicode Slug)
-__all__ = ['VerifyEmail', 'verify_email_address']
+__all__ = ['VerifyEmail', 'verify_email_address', 'query_mx']
+
+mx_re = re.compile('mail\sexchanger\s=\s(\d+)\s(.*)\.')
+
+def query_mx(host):
+    """ Returns all MX records of a given domain name """
+
+    mx = []
+    addr = {}
+    fout, fin = popen2.popen2('which nslookup')
+    cmd = fout.readline().strip()
+    if cmd <> '':
+        fout, fin = popen2.popen2('%s -query=mx %s' % (cmd, host))
+        line = fout.readline()
+        while line <> '':
+            m = mx_re.search(line.lower())
+            if m:
+                mx.append((eval(m.group(1)), m.group(2)))
+            line = fout.readline()
+
+        if mx:
+            mx.sort()
+    return mx
 
 
 class VerifyEmail(object):
@@ -50,7 +73,7 @@ class VerifyEmail(object):
 
     # given a hostname, a smtp server connection is returned or None
     def get_smtp_connection(self, hostname):
-        """ returns server with valid connection if possible """
+        """ returns a server with valid connection if possible """
         resp = self.default_response
         connection_success = lambda x: x[0] == 220
         if self.is_hostname_valid(hostname):
@@ -126,26 +149,16 @@ class VerifyEmail(object):
         return resp
             
 # given an email it returns True if it can tell it exist or False
-def  verify_email_address(email):
+def  verify_email_address(
+                email, 
+                from_host='example.com',
+                from_email='verify@example.com'
+                ):
+    """ A quick email verification fuction """
     e = VerifyEmail()
-    status = e.verify_email_smtp(email)
+    status = e.verify_email_smtp(email=email, from_host='example.com', from_email='verify@example.com')
     if e.was_found(status):
         return True
     return False
-
-# if __name__ == "__main__":
-#     # e = VerifyEmail()
-#     # status = e.verify_email_smtp(sys.argv[1])
-#     # if e.was_found(status):
-#     #     print >> sys.stderr, "Found:", status
-#     # elif e.not_found(status):
-#     #     print >> sys.stderr, "Not Found:", status
-#     # else:
-#     #     print >> sys.stderr, "Unverifiable:", status
-# 
-#     if verify_email_address(sys.argv[1]):
-#         print >> sys.stderr, "Found"
-#     else:
-#         print >> sys.stderr, "Not found"
 
 

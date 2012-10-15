@@ -14,7 +14,7 @@ url = 'https://github.com/un33k/python-emailahoy'
 author = 'Val Neekman'
 author_email = 'info@neekware.com'
 license = 'BSD'
-install_requires = ['Unidecode>=0.04.9']
+install_requires = []
 classifiers = [
     'Development Status :: 3 - Alpha',
     'Intended Audience :: Developers',

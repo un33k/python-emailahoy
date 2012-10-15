@@ -50,6 +50,7 @@ How to use
         print >> sys.stderr, "Don't care"
 
 ``Note:``
+
     1. Not all email servers will return the correct status
     2. Checking an invalid email address returns within 1 second
     3. Checking a valid email address returns within 4 seconds or more

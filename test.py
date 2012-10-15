@@ -91,7 +91,7 @@ class TestEmailVerificationFunctions(unittest.TestCase):
         self.log.debug("Testing MX Query for valid domain (%s)" % domain)
         
         mx = query_mx('gmail.com')
-        self.assertGreater(len(mx), 0)
+        self.assertNotEqual(len(mx), 0)
 
 
 if __name__ == '__main__':

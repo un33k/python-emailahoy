@@ -4,7 +4,7 @@ import unittest
 from emailahoy import VerifyEmail
 from emailahoy import query_mx
 from emailahoy import verify_email_address
-
+import sys
 class TestEmailVerificationFunctions(unittest.TestCase):
 
     def setUp(self):
@@ -28,6 +28,7 @@ class TestEmailVerificationFunctions(unittest.TestCase):
                             from_host='neekware.com',
                             from_email='info@neekware.com'
                         )
+        print >> sys.stderr, status
         # email exists
         self.assertEquals(self.e.was_found(status), True)
 

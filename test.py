@@ -18,7 +18,7 @@ class TestEmailVerificationFunctions(unittest.TestCase):
     def test_class_based_invalid_email(self):
         """ Test the existance of an invalid email address (class based)"""
         
-        email = 'non-existing-email@gmail.com'
+        email = 'non-existing-email@cnn.com'
         self.log.debug("Testing classy invalid email address (%s)" % email)
         
         status = self.e.verify_email_smtp(
@@ -33,10 +33,10 @@ class TestEmailVerificationFunctions(unittest.TestCase):
     def test_class_based_valid_email(self):
         """ Test the existance of a valid email address (class based)"""
         
-        email = 'info@neekware.com'
+        email = 'vinnie@cnn.com'
         self.log.debug("Testing classy valid email address (%s)" % email)
         status = self.e.verify_email_smtp(
-                            email='info@neekware.com',
+                            email=email,
                             from_host='neekware.com',
                             from_email='info@neekware.com'
                         )
@@ -47,7 +47,7 @@ class TestEmailVerificationFunctions(unittest.TestCase):
     def test_function_based_invalid_email(self):
         """ Test the existance of an invalid email address (function based)"""
 
-        email = 'non-existing-email@gmail.com'
+        email = 'non-existing-email@cnn.com'
         self.log.debug("Testing invalid email address (%s)" % email)
         
         found = verify_email_address(
@@ -63,7 +63,7 @@ class TestEmailVerificationFunctions(unittest.TestCase):
     def test_function_based_valid_email(self):
         """ Test the existance of a valid email address (function based)"""
         
-        email = 'info@neekware.com'
+        email = 'vinnie@cnn.com'
         self.log.debug("Testing valid email address (%s)" % email)
         
         found = verify_email_address(
@@ -87,10 +87,10 @@ class TestEmailVerificationFunctions(unittest.TestCase):
     def test_mx_query_valid_domain(self):
         """ Query mx of a valid domain name """
         
-        domain = 'gmail.com'
+        domain = 'cnn.com'
         self.log.debug("Testing MX Query for valid domain (%s)" % domain)
         
-        mx = query_mx('gmail.com')
+        mx = query_mx(domain)
         self.assertNotEqual(len(mx), 0)
 
 

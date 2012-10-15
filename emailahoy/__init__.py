@@ -111,7 +111,7 @@ class VerifyEmail(object):
                 "invalid",
                 "doesn't handle",
         ]
-        return resp[0] != 250 and any(a in resp[1].lower() for a in not_found_words):
+        return resp[0] != 250 and any(a in resp[1].lower() for a in not_found_words)
 
 
     # given a response tuple, it returns true if it couldn't tell, if email found or not

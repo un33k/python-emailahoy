@@ -1,3 +1,9 @@
+## 0.0.6
+
+Bugfixes:
+
+  - Fixed Unittest
+
 ## 0.0.5
 
 Enhancement:

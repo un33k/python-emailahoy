@@ -45,7 +45,7 @@ UNVERIFIABLE_KEYWORDS = [
 def query_mx(host):
     """ Returns all MX records of a given domain name """
 
-    mx = []
+    mail_exchangers = []
     addr = {}
     fout, fin = popen2.popen2('which nslookup')
     cmd = fout.readline().strip()
@@ -53,14 +53,14 @@ def query_mx(host):
         fout, fin = popen2.popen2('%s -query=mx %s' % (cmd, host))
         line = fout.readline()
         while line <> '':
-            m = MX_RE.search(line.lower())
-            if m:
-                mx.append((eval(m.group(1)), m.group(2)))
+            mx = MX_RE.search(line.lower())
+            if mx:
+                mail_exchangers.append((eval(mx.group(1)), mx.group(2)))
             line = fout.readline()
 
-        if mx:
-            mx.sort()
-    return mx
+        if mail_exchangers:
+            mail_exchangers.sort()
+    return mail_exchangers
 
 
 class VerifyEmail(object):
@@ -164,11 +164,12 @@ def  verify_email_address(
         return False
     return True
 
-# if __name__ == "__main__":
-   # if verify_email_address('un33kvu@gmail.com', 'djanguru.com', 'verify@djanguru.com'):
-   # if verify_email_address('un33ksssddsdsd333vu@gmail.com', 'djanguru.com', 'verify@djanguru.com'):
-   # if verify_email_address('un33kvu@yahoo.com', 'djanguru.com', 'verify@djanguru.com'):
-   # if verify_email_address('un33ksssddsdsd333vu@yahoo.com', 'djanguru.com', 'verify@djanguru.com'):
-   # if verify_email_address('un33ksssddsdsd333vu@cnn.com', 'djanguru.com', 'verify@djanguru.com'):
-   # if verify_email_address('vinnie@cnn.com', 'djanguru.com', 'verify@djanguru.com'):
-       # print "found"
+if __name__ == "__main__":
+   # if verify_email_address('un33kvu@gmail.com', 'djanguru.djanguru.net', 'verify@djanguru.net'):
+   # if verify_email_address('un33ksssddsdsd333vu@gmail.com', 'djanguru.net', 'verify@djanguru.net'):
+   # if verify_email_address('un33kvu@yahoo.com', 'djanguru.net', 'verify@djanguru.net'):
+   # if verify_email_address('un33ksssddsdsd333vu@yahoo.com', 'djanguru.net', 'verify@djanguru.net'):
+   # if verify_email_address('un33ksssddsdsd333vu@cnn.com', 'djanguru.net', 'verify@djanguru.net'):
+   # if verify_email_address('vman@outsourcefactor.com', 'djanguru.net', 'verify@djanguru.net'):
+   if verify_email_address('asfsadfasfsdf@hotmail.com', 'djanguru.net', 'verify@djanguru.net'):
+       print "found"

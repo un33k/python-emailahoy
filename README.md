@@ -3,7 +3,10 @@ Python Email Ahoy
 
 **A Python email utility that verifies existence of an email address**
 
-**Author:** Val Neekman [ info@neekware.com, @vneekman ]
+
+[![build-status-image-fury]][fury]
+[![build-status-image-pypi]][pypi]
+
 
 Overview
 ========
@@ -33,7 +36,7 @@ How to use
     status = e.verify_email_smtp(
                         email='test@example.com',
                         from_host='mydomain.com',
-                        from_email='verify@mydomain.com' 
+                        from_email='verify@mydomain.com'
                     )
     if e.was_found(status):
         print >> sys.stderr, "Found:", status
@@ -63,57 +66,18 @@ To run the tests against the current environment:
 
     python test.py
 
-Changelog
-=========
-
-0.0.5
------
-* Enabled Unittest
-
-0.0.4
------
-* Added Unittest
-
-0.0.3
------
-* Added Travis CI support
-
-0.2
------
-* Removed dependency on external packages (pydns)
-
-0.1
------
-
-* Initial release
-
-
 License
-=======
+====================
 
-Copyright (c) 2012, Val Neekman
-Neekware Inc.
-
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without 
-modification, are permitted provided that the following conditions are met:
-
-Redistributions of source code must retain the above copyright notice, this 
-list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this 
-list of conditions and the following disclaimer in the documentation and/or 
-other materials provided with the distribution.
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE 
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Protected by ([BSD](LICENSE.md))
 
 
+[build-status-image-travis]: https://secure.travis-ci.org/un33k/python-emailahoy.png?branch=master
+[travis]: http://travis-ci.org/tomchristie/python-emailahoy?branch=master
+
+[build-status-image-fury]: https://badge.fury.io/py/python-emailahoy.png
+[fury]: http://badge.fury.io/py/python-emailahoy
+
+[build-status-image-pypi]: https://pypip.in/d/python-emailahoy/badge.png
+[pypi]: https://crate.io/packages/python-emailahoy?version=latest
 

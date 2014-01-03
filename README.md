@@ -69,11 +69,11 @@ To run the tests against the current environment:
 License
 ====================
 
-Released under ([BSD](LICENSE.md)).
+Released under a ([BSD](LICENSE.md)) license.
 
 
 [build-status-image-travis]: https://secure.travis-ci.org/un33k/python-emailahoy.png?branch=master
-[travis]: http://travis-ci.org/tomchristie/python-emailahoy?branch=master
+[travis]: http://travis-ci.org/un33k/python-emailahoy?branch=master
 
 [build-status-image-fury]: https://badge.fury.io/py/python-emailahoy.png
 [fury]: http://badge.fury.io/py/python-emailahoy

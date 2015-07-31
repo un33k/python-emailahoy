@@ -8,7 +8,7 @@ import socket
 import popen2
 import smtplib as _smtp
 
-DEBUG = True
+DEBUG = False
 
 __all__ = ['VerifyEmail', 'verify_email_address', 'query_mx']
 
@@ -159,7 +159,6 @@ def  verify_email_address(
     """ A quick email verification fuction """
     e = VerifyEmail()
     status = e.verify(email, from_host, from_email)
-    print status
     if status == e.EMAIL_NOT_FOUND:
         return False
     return True

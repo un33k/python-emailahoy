@@ -120,32 +120,44 @@ class VerifyEmail(object):
                 continue
             if DEBUG:
                 server.set_debuglevel(1)
-            code, resp = server.helo(mx_name)
-            if code != 250:
-                if not self.unverifiable(resp):
-                    return self.UNABLE_TO_VERIFY
-                continue
-            code, resp = server.mail(from_email)
-            if code != 250:
-                if not self.unverifiable(resp):
-                    return self.UNABLE_TO_VERIFY
-                continue
-            code, resp = server.rcpt(email)
-            if code != 250:
-                if self.nonexistent(resp):
-                    return self.EMAIL_NOT_FOUND
-                elif self.unverifiable(resp):
-                    return self.UNABLE_TO_VERIFY
-                else:
+            try:
+                code, resp = server.helo(mx_name)
+                if code != 250:
+                    if not self.unverifiable(resp):
+                        return self.UNABLE_TO_VERIFY
                     continue
-            code, resp = server.data('Ahoy. Are you there?{0}.{0}'.format(_smtp.CRLF))
-            if code != 250:
-                if self.nonexistent(resp):
-                    return self.EMAIL_NOT_FOUND
-                elif self.unverifiable(resp):
-                    return self.UNABLE_TO_VERIFY
-            elif code == 250:
-                return self.EMAIL_FOUND
+            except:
+                pass
+            try:
+                code, resp = server.mail(from_email)
+                if code != 250:
+                    if not self.unverifiable(resp):
+                        return self.UNABLE_TO_VERIFY
+                    continue
+            except:
+                pass
+            try:
+                code, resp = server.rcpt(email)
+                if code != 250:
+                    if self.nonexistent(resp):
+                        return self.EMAIL_NOT_FOUND
+                    elif self.unverifiable(resp):
+                        return self.UNABLE_TO_VERIFY
+                    else:
+                        continue
+            except:
+                pass
+            try:
+                code, resp = server.data('Ahoy. Are you there?{0}.{0}'.format(_smtp.CRLF))
+                if code != 250:
+                    if self.nonexistent(resp):
+                        return self.EMAIL_NOT_FOUND
+                    elif self.unverifiable(resp):
+                        return self.UNABLE_TO_VERIFY
+                elif code == 250:
+                    return self.EMAIL_FOUND
+            except:
+                pass
 
         return self.UNABLE_TO_VERIFY
 

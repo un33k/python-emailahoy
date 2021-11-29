@@ -101,7 +101,7 @@ class VerifyEmail(object):
         from_host='example.com',
         from_email='verify@example.com'
         ):
-        """ verifies wether an email address does exsit """
+        """ verifies whether an email address does exist """
 
         if not EMAIL_RE.search(email):
             return self.EMAIL_NOT_FOUND
@@ -168,7 +168,7 @@ def  verify_email_address(
                 from_host='example.com',
                 from_email='verify@example.com'
                 ):
-    """ A quick email verification fuction """
+    """ A quick email verification function """
     e = VerifyEmail()
     status = e.verify(email, from_host, from_email)
     if status == e.EMAIL_NOT_FOUND:

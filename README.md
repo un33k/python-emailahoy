@@ -31,26 +31,31 @@ How to use
 
 ``Use the class for more control & more granular return status``
 
-    from emailahoy import VerifyEmail
-    e = VerifyEmail()
-    status = e.verify_email_smtp(
-                        email='test@example.com',
-                        from_host='mydomain.com',
-                        from_email='verify@mydomain.com'
-                    )
-    if e.was_found(status):
-        print >> sys.stderr, "Found:", status
-    elif e.not_found(status):
-        print >> sys.stderr, "Not Found:", status
-    else:
-        print >> sys.stderr, "Unverifiable:", status
+```python
+from emailahoy import VerifyEmail
+e = VerifyEmail()
+status = e.verify_email_smtp(
+    email='test@example.com',
+    from_host='mydomain.com',
+    from_email='verify@mydomain.com'
+)
+
+if e.was_found(status):
+    print >> sys.stderr, "Found:", status
+elif e.not_found(status):
+    print >> sys.stderr, "Not Found:", status
+else:
+    print >> sys.stderr, "Unverifiable:", status
+```
 
 ``Use the shorthand function for quick check``
 
-    if verify_email_address('test@example.com'):
-        print >> sys.stderr, "Found"
-    else:
-        print >> sys.stderr, "Don't care"
+```python
+if verify_email_address('test@example.com'):
+    print >> sys.stderr, "Found"
+else:
+    print >> sys.stderr, "Don't care"
+```
 
 ``Note:``
 

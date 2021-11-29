@@ -5,7 +5,6 @@ Python Email Ahoy
 
 
 [![build-status-image-fury]][fury]
-[![build-status-image-pypi]][pypi]
 
 
 Overview
@@ -77,12 +76,7 @@ License
 Released under a ([BSD](LICENSE.md)) license.
 
 
-[build-status-image-travis]: https://secure.travis-ci.org/un33k/python-emailahoy.png?branch=master
-[travis]: http://travis-ci.org/un33k/python-emailahoy?branch=master
-
 [build-status-image-fury]: https://badge.fury.io/py/python-emailahoy.png
 [fury]: http://badge.fury.io/py/python-emailahoy
 
-[build-status-image-pypi]: https://pypip.in/d/python-emailahoy/badge.png
-[pypi]: https://crate.io/packages/python-emailahoy?version=latest
 
